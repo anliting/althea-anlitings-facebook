@@ -3,10 +3,7 @@ module.exports=althea=>{
     althea.addPagemodule('/facebook',pagemodule)
 }
 function pagemodule(env){
-    if(
-        env.request.headers.origin&&
-        env.request.headers.origin!=env.envVars.allowedOrigin
-    )
+    if(!env.althea.allowOrigin(env.envVars,env.request.headers.origin))
         return 403
     if(env.request.method=='GET')
         return get(env)
@@ -17,7 +14,7 @@ function pagemodule(env){
     }
 }
 function get(env){
-    env.headers['location']=
+    env.headers.location=
         'https://www.facebook.com/anlialtting'
     return{
         status:303,
