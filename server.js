@@ -7,7 +7,7 @@ function pagemodule(env){
         return 403
     if(env.request.method=='GET')
         return get(env)
-    env.headers['allow']='GET'
+    env.headers.allow='GET'
     return{
         status:405,
         headers:env.headers,
