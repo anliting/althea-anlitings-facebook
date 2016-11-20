@@ -14,8 +14,7 @@ function pagemodule(env){
     }
 }
 function get(env){
-    env.headers.location=
-        'https://www.facebook.com/anlialtting'
+    env.headers.location='https://www.facebook.com/anlitingcom'
     return{
         status:303,
         headers:env.headers,
