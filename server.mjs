@@ -1,7 +1,3 @@
-module.exports=function(althea){
-    althea.addPagemodule('/fb',pagemodule)
-    althea.addPagemodule('/facebook',pagemodule)
-}
 function pagemodule(env){
     if(!env.althea.allowOrigin(env.envVars,env.request.headers.origin))
         return 403
@@ -19,4 +15,8 @@ function get(env){
         status:303,
         headers:env.headers,
     }
+}
+export default althea=>{
+    althea.addPagemodule('/fb',pagemodule)
+    althea.addPagemodule('/facebook',pagemodule)
 }
