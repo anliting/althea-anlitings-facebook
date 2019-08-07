@@ -16,7 +16,15 @@ function get(env){
         headers:env.headers,
     }
 }
-export default althea=>{
+function Plugin(althea){
+    this._althea=althea
     althea.addPagemodule('/fb',pagemodule)
     althea.addPagemodule('/facebook',pagemodule)
 }
+Plugin.prototype.end=function(){
+    this._althea.cutPagemodule('/fb')
+    this._althea.cutPagemodule('/facebook')
+}
+Plugin.prototype.shutdownEnd=function(){
+}
+export default Plugin
